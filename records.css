@@ -1,0 +1,130 @@
+body {
+    width: 500px; 
+    height: 300px;
+    margin: 0;
+    padding: 0;
+    overflow: auto;
+    background-color: rgb(188, 207, 245);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.circle {
+    width: 105px;
+    height: 105px;
+    border: 2px solid rgb(83, 114, 178);
+    border-radius: 200px 200px 200px 200px; 
+    position: absolute;
+    top: 13%;
+    left: 50%;
+    overflow: hidden;
+    cursor: pointer;
+/*     transition: transform 0.3s ease;  */
+}
+
+#daily {
+    background: rgb(119, 139, 179);
+    transform: translate(-170%, -15%) ;
+}
+
+#goal {
+    background: rgb(119, 139, 179);
+    transform: translate(-45%, -15%) ;
+}
+
+#total {
+    background: rgb(119, 139, 179);
+
+    transform: translate(80%, -15%);
+}
+
+/* #daily:hover, #goal:hover, #total:hover {
+    transform: scale(1.1);
+}
+
+#daily:hover {
+    transform: translate(-180%, -15%) scale(1.1);
+}
+
+#goal:hover {
+    transform: translate(-45%, -15%) scale(1.1);
+}
+
+#total:hover {
+    transform: translate(100%, -15%) scale(1.1);
+} */
+
+.circle span {
+    position: absolute;
+    top: 35%;
+    left: 50%;
+    color: rgb(255, 255, 255);
+    font-size: 22px;
+    text-align: center;
+    font-style: italic;
+/*     font-weight: bold; */
+    transform: translate(-50%, -50%);
+}
+
+/* #rectangle {
+    width: 600px; 
+    height: 150px; 
+    padding: 20px;
+    background-color: transparent;
+    display: flex;
+    position: absolute; 
+    top: 20%;
+    justify-content: flex-start;
+    margin-bottom: 30%; */ /*moves the rectangle down*/
+
+
+#back-icon {
+    position: absolute;
+    top: 25px; 
+    left: 25px;  
+}
+
+#back-icon:hover {
+    transform: scale(1.1);
+}
+
+#table_wrapper {
+    position: absolute;
+    width: 400px;  
+    height: 120px; 
+    overflow: auto;
+    top: 50%;
+    margin: auto;
+    background-color: transparent;
+    border-radius: 10px; 
+    border: 2px solid rgba(83, 115, 178, 0.521);
+}
+
+#table_records {
+    border-collapse: separate; /* collapse means no space between cells */
+    border-spacing: 0;
+    width: 100%;
+/*     border-radius: 10px;  */
+    overflow: auto; 
+    background-color: transparent;
+}
+
+#table_records td, #table_records th {
+/*     border: 1px solid #ddd; */
+    padding: 6px; /* padding inside cells */
+    text-align: center;
+}
+  
+#table_records th {
+    position: sticky; /* make the first row stick to the top of the container */
+    top: 0;
+/*     padding-top: 12px;
+    padding-bottom: 12px; */
+/*     text-align: center; */
+    color: black;
+    background-color: rgb(119, 139, 179);
+}
+
+/* scrollbar styling is not standardized and might not work in all browsers */
+/* so I write it in JavaScript */
