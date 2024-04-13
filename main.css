@@ -1,0 +1,81 @@
+body {
+    width: 500px; 
+    height: 300px;
+    margin: 0;
+    padding: 0;
+    overflow: auto;
+    background-color: rgb(188, 207, 245);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.half-circle {
+    width: 200px;
+    height: 100px;
+    border: 3px solid rgb(83, 114, 178);
+    border-radius: 200px 200px 0 0; /* Rounded corners to make a half-circle */
+    position: absolute;
+    left: 50%;
+    overflow: hidden; /* Ensures no overflow content is visible */
+    cursor: pointer; /* Cursor changes to pointer to indicate interactiveness */
+    transition: transform 0.3s ease;  /* Smooth transformation upon action */
+}
+
+#start {
+    background: rgb(119, 139, 179);
+    transform: rotate(270deg);
+/*     top: 50%;
+    left: 50%; */
+    transform: translate(-75%, -50%) rotate(270deg);
+}
+
+#records {
+    background: rgb(146, 178, 243);
+/*     top: 50%;
+    left: 50%; */
+    transform: translate(-25%, -50%) rotate(90deg);
+}
+
+#start:hover, #records:hover {
+    transform: scale(1.1);
+}
+
+#start:hover {
+    transform: translate(-80%, -50%) rotate(270deg) scale(1.1); /* Move the button to the left 5%*/
+}
+
+#records:hover {
+    transform: translate(-20%, -50%) rotate(90deg) scale(1.1);
+}
+
+.half-circle span { /* Styling for the text inside the button */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    color: rgb(21, 44, 90);
+    font-size: 22px;
+    text-align: center;
+    font-style: italic;
+    font-weight: bold;
+}
+
+#start span {
+    transform: translate(-50%, -50%) rotate(90deg);
+}
+
+#records span {
+    transform: translate(-50%, -50%) rotate(-90deg);
+}
+
+#followMouse { 
+    /* transition: top 0.5s, left 0.5s; */
+    position: absolute;
+    bottom: 0; /* Initial position */
+    left: 0;
+}
+
+.flip { /* flip the animation image */
+    transform: scaleX(-1);
+}
+
