@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Productive</title>
+    <link rel="stylesheet" href="./break.css">
+</head>
+<body>
+    <audio id="music" src="./sound/rainy-day-in-town-with-birds-singing.mp3" preload="auto"></audio>
+    <audio id="ticking-sound" src="./sound/clock-ticking.mp3" preload="auto"></audio>
+    <a href="finish.html">
+        <div id="fin" class="circle"><span>Finish</span></div>
+    </a>
+    <div>
+        <img src="./images/blue_cat_idle1.png" class="image" id="animation">
+    </div>
+    <a href="start.html">
+        <div id="continue" class="circle"><span>Continue</span></div>
+    </a>
+    <div class="break_timer"> 
+        <div id="break_time"> 
+            <span class="break_digit" id="break_hr">00</span> 
+            <span class="break_txt" id="break_txt1"> : </span> 
+            <span class="break_digit" id="break_min">20</span> 
+            <span class="break_txt" id="break_txt2"> : </span> 
+            <span class="break_digit" id="break_sec">00</span> 
+        </div> 
+    </div> 
+    <span class="break_quote" id="inspirational-sentence"></span> 
+    <img id="music-icon" src="./images/music-off.png" style="cursor:pointer;">
+    <img id="mute-button" src="./images/volume-up.png" style="cursor:pointer;">
+    <script src="./break.js"></script>
+</body>
+</html>

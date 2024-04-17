@@ -1,0 +1,137 @@
+body {
+    width: 500px; 
+    height: 300px;
+    margin: 0;
+    padding: 0;
+    overflow: auto;
+    background-color: rgb(188, 207, 245);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.circle {
+    width: 120px;
+    height: 120px;
+    border: 3px solid rgb(83, 114, 178);
+    border-radius: 200px 200px 200px 200px; 
+    position: absolute;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.3s ease; 
+}
+
+#fin {
+    background: rgb(119, 139, 179);
+    top: 20%;
+    left: 50%;
+    transform: translate(-160%, -15%) ;
+}
+
+#continue {
+    background: rgb(146, 178, 243);
+    top: 20%;
+    left: 50%;
+    transform: translate(60%, -15%);
+}
+
+#fin:hover, #continue:hover {
+    transform: scale(1.1);
+}
+
+#fin:hover {
+    transform: translate(-160%, -15%) scale(1.1);
+}
+
+#continue:hover {
+    transform: translate(60%, -15%) scale(1.1);
+}
+
+.circle span {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    color: rgb(21, 44, 90);
+    font-size: 22px;
+    text-align: center;
+    font-style: italic;
+    font-weight: bold;
+    transform: translate(-50%, -50%);
+}
+
+/* .image {
+    position: absolute;
+    top: 35%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100px; 
+    height: 100px; 
+} */
+
+.image {
+    position: absolute;
+    top: 35%;
+/*     left: 50%; cat*/ 
+    left: 52%; /* blue cat */
+    transform: translate(-50%, -50%);
+/*     width: 80px; 
+    height: 80px; cat*/
+    width: 85px;  /* blue cat */
+    height: 85;  /* blue cat */
+}
+
+.break_timer { 
+    display: flex; 
+    flex-direction: column; 
+    justify-content: center; 
+    align-items: center; 
+    width: auto;
+    height: auto;
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+} 
+
+.break_digit { 
+    font-size: 40px; 
+    color: rgba(159, 158, 158, 0.676); 
+} 
+
+.break_txt { 
+    font-size: 40px; 
+    color: rgba(159, 158, 158, 0.676); 
+} 
+
+.break_quote { 
+    font-size: 15px; 
+    color: rgb(0, 0, 0); 
+    position: absolute;
+    top: 85%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    font-style: italic;
+    font-weight: bold;
+    width: 400px;
+    height: 80px;
+} 
+
+#mute-button {
+    position: fixed;
+    right: 25px;
+    bottom: 25px;
+    cursor: pointer;
+}
+
+#mute-button:hover, #music-icon:hover {
+    transform: scale(1.1);
+}
+
+#music-icon {
+    position: fixed;
+    left: 25px;
+    bottom: 25px;
+    cursor: pointer;
+}
+
