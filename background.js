@@ -20,3 +20,14 @@ chrome.action.onClicked.addListener(async (tab) => {
         });
     });
 });
+// Define the value you want to store
+var myValue = "exampleValue";
+// Store data
+chrome.storage.local.set({key: myValue}, function() {
+    console.log('Data saved');
+  });
+  
+  // Retrieve data
+  chrome.storage.local.get(['key'], function(result) {
+    console.log('Value currently is ' + result.key);
+  });
