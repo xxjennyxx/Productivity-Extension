@@ -14,12 +14,12 @@ body {
     width: 200px;
     height: 100px;
     border: 3px solid rgb(83, 114, 178);
-    border-radius: 200px 200px 0 0; /* Rounded corners to make a half-circle */
+    border-radius: 200px 200px 0 0; /* rounded corners to make a half-circle */
     position: absolute;
     left: 50%;
-    overflow: hidden; /* Ensures no overflow content is visible */
-    cursor: pointer; /* Cursor changes to pointer to indicate interactiveness */
-    transition: transform 0.3s ease;  /* Smooth transformation upon action */
+    overflow: hidden; /* ensures no overflow content is visible */
+    cursor: pointer; /* cursor changes to pointer to indicate interactiveness */
+    transition: transform 0.3s ease;  /* smooth transformation upon action */
 }
 
 #start {
@@ -42,14 +42,14 @@ body {
 }
 
 #start:hover {
-    transform: translate(-80%, -50%) rotate(270deg) scale(1.1); /* Move the button to the left 5%*/
+    transform: translate(-80%, -50%) rotate(270deg) scale(1.1); /* move the button to the left 5%*/
 }
 
 #records:hover {
     transform: translate(-20%, -50%) rotate(90deg) scale(1.1);
 }
 
-.half-circle span { /* Styling for the text inside the button */
+.half-circle span { /* styling for the text inside the button */
     position: absolute;
     top: 50%;
     left: 50%;
@@ -71,7 +71,7 @@ body {
 #followMouse { 
     /* transition: top 0.5s, left 0.5s; */
     position: absolute;
-    bottom: 0; /* Initial position */
+    bottom: 0; /* initial position */
     left: 0;
 }
 
