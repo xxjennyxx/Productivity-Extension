@@ -13,7 +13,7 @@ window.onload = function() {
         mouseY = e.pageY;
         if (!moving) {
             moving = true;
-            img.src = images[imageIndex]; // Change the image
+            img.src = images[imageIndex]; // change the image
             requestAnimationFrame(moveImage);
         }
     };
@@ -23,12 +23,12 @@ window.onload = function() {
         if (Math.abs(mouseX - imgX) > 1) {
             var distance = Math.abs(mouseX - imgX);
             var dynamicSpeed = speed;
-            if (distance < 50) { // If the distance is small
-                dynamicSpeed *= (1 + (50 - distance) / 50); // Increase the speed factor
+            if (distance < 50) { // if the distance is small
+                dynamicSpeed *= (1 + (50 - distance) / 50); // increase the speed factor
             }
-            imgX += (mouseX - imgX - img.offsetWidth / 2) * dynamicSpeed; // Adjust the image position by half of the image width
-            if (Math.abs(mouseX - imgX) < 1) { // If the distance is small
-                imgX = mouseX - img.offsetWidth / 2; // Set the image position directly to the mouse position
+            imgX += (mouseX - imgX - img.offsetWidth / 2) * dynamicSpeed; // adjust the image position by half of the image width
+            if (Math.abs(mouseX - imgX) < 1) { // if the distance is small
+                imgX = mouseX - img.offsetWidth / 2; // set the image position directly to the mouse position
             }
         }
 
@@ -40,12 +40,12 @@ window.onload = function() {
         img.style.left = imgX + 'px';
         img.style.top = imgY + 'px';
 
-        // Update the image every few frames
-        if (frameCount % 10 === 0) { // Change the image every 10 frames
-            // Check if the mouse is at the center of the image
+        // update the image every few frames
+        if (frameCount % 10 === 0) { // change the image every 10 frames
+            // check if the mouse is at the center of the image
             if (Math.abs(mouseX - (imgX + img.offsetWidth / 2)) <= 1) {
                 img.src = './images/blue_cat1.png';
-                imageIndex = 0; // Reset the image index
+                imageIndex = 0; // reset the image index
             } else {
                 img.src = images[imageIndex];
                 imageIndex = (imageIndex + 1) % images.length;
@@ -57,7 +57,7 @@ window.onload = function() {
             requestAnimationFrame(moveImage);
         } else {
             moving = false;
-            frameCount = 0; // Reset the frame count when the image stops moving
+            frameCount = 0; // reset the frame count when the image stops moving
         }
     }    
 }

@@ -33,7 +33,7 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
 
 var i = 0;
 var txt = '';
-var speed = 50; /* The speed/duration of the effect in milliseconds */
+var speed = 50; /* the speed/duration of the effect in milliseconds */
 
 function typeWriter() {
   if (i < txt.length) {

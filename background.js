@@ -1,4 +1,4 @@
-chrome.action.onClicked.addListener(async (tab) => {
+chrome.action.onClicked.addListener(tab => {
     chrome.windows.getCurrent(async (currentWindow) => {
         // center the popup window on the user's screen
         let width = 560;
@@ -64,7 +64,7 @@ function stopWatch() {
     }
 }
 
-setInterval(stopWatch, 1000);
+setInterval(stopWatch, 1000); // 10: ms, 1000:s, ...
 
 chrome.runtime.onMessage.addListener(
     function(request, sender, sendResponse) {

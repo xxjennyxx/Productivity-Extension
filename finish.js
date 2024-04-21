@@ -14,7 +14,7 @@ document.getElementById('back-icon').addEventListener('click', function() {
     window.location.href = './start.html';
 });
  
-// Remember to keep the record of timer, not reset
+// remember to keep the record of timer, not reset
 /* 
 window.onload = function() {
     document.getElementById('save').onclick = function() {

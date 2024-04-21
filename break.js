@@ -32,7 +32,7 @@ function startTimer(duration) {
 }
 
 window.onload = function() {
-    // Start the timer
+    // start the timer
     var time = 19 * 60 + 59; // 20 minutes
     startTimer(time);
 
@@ -49,7 +49,7 @@ window.onload = function() {
 
     // animation
     animateImage();
-    setInterval(animateImage, 2000); // Repeat the animation every 2.0 seconds
+    setInterval(animateImage, 2000); // repeat the animation every 2.0 seconds
 }
 
 // if the mute-button is clicked, stop playing the ticking sound, and change to another icon
@@ -95,7 +95,7 @@ document.getElementById('music-icon').addEventListener('click', function() {
 // repeating typing effect
 var i = 0;
 var txt = 'Keep it up! You are doing great!';
-var speed = 50; // The speed/duration of the effect in milliseconds 
+var speed = 50; // the speed/duration of the effect in milliseconds 
 
 function typeWriter() {
     if (i < txt.length) {
@@ -103,12 +103,12 @@ function typeWriter() {
         i++;
         setTimeout(typeWriter, speed);
     } else {
-        // Reset i and delay the clearing of the innerHTML and the repetition of the typing effect
+        // reset i and delay the clearing of the innerHTML and the repetition of the typing effect
         i = 0;
         setTimeout(function() {
             document.getElementById("inspirational-sentence").innerHTML = '';
             typeWriter();
-        }, 2000); // Wait for 2 seconds before repeating
+        }, 2000); // wait for 2 seconds before repeating
     }
 }
 
@@ -117,7 +117,7 @@ typeWriter();
 function animateImage() {
     var imgIndex = 0;
     var images = ["./images/blue_cat_idle1.png", "./images/blue_cat_idle2.png", "./images/blue_cat_idle3.png", "./images/blue_cat_idle4.png"];
-    var delay = 2000; // Total cycle time: 500*4
+    var delay = 2000; // total cycle time: 500*4
 
     setInterval(function() {
         document.getElementById("animation").src = images[imgIndex++];

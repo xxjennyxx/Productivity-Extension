@@ -6,7 +6,7 @@ document.getElementById('back-icon').addEventListener('click', function() {
 var isIEorEdge = /msie\s|trident\/|edge\//i.test(window.navigator.userAgent);
 
 if (isIEorEdge) {
-    // Apply IE/Edge specific styles
+    // apply IE/Edge specific styles
     var style = document.createElement('style');
     style.innerHTML = `
         #table_wrapper {
@@ -15,7 +15,7 @@ if (isIEorEdge) {
     `;
     document.head.appendChild(style);
 } else {
-    // Apply styles for other browsers
+    // apply styles for other browsers
     var style = document.createElement('style');
     style.innerHTML = `
         #table_wrapper::-webkit-scrollbar {
