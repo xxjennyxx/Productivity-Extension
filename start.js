@@ -1,72 +1,35 @@
 let stopBtn = document.getElementById('finish'); 
 let breakBtn = document.getElementById('break'); 
-  
-let hour = 0; 
-let minute = 0; 
-let second = -1; 
-  
-timer = true
-stopWatch();
-  
+
+// start the timer
+chrome.runtime.sendMessage({command: "start"});
+
 stopBtn.addEventListener('click', function () { 
-    timer = false; 
+    chrome.runtime.sendMessage({command: "stop"});
 }); 
   
 breakBtn.addEventListener('click', function () { 
-    timer = false;  
+    chrome.runtime.sendMessage({command: "stop"});
 }); 
-  
-function stopWatch() { 
-    if (timer) { 
-        second++;
-  
-        if (second == 60) { 
-            minute++; 
-            second = 0; 
-        } 
-  
-        if (minute == 60) { 
-            hour++; 
-            minute = 0; 
-            second = 0; 
-        } 
-  
-        let hrString = hour; 
-        let minString = minute; 
-        let secString = second; 
-  
-        if (hour < 10)
-            hrString = "0" + hrString; 
-  
-        if (minute < 10) 
-            minString = "0" + minString; 
-  
-        if (second < 10) 
-            secString = "0" + secString; 
 
-        if (hour != 0){
-            document.getElementById('hr').style.color = 'black';
-            document.getElementById('txt1').style.color = 'black';
-        } else {
-            if (minute != 0){
-                document.getElementById('min').style.color = 'black';
-                document.getElementById('txt2').style.color = 'black';
-            }
-            else {
-                if (second != 0){
-                    document.getElementById('sec').style.color = 'black';
-                }
-            }
-        }
-  
-        document.getElementById('hr').innerHTML = hrString; 
-        document.getElementById('min').innerHTML = minString; 
-        document.getElementById('sec').innerHTML = secString; 
+// update the timer values
+chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
+    if (request.command === "get") {
+        document.getElementById('hr').innerHTML = request.hour; 
+        document.getElementById('min').innerHTML = request.minute; 
+        document.getElementById('sec').innerHTML = request.second; 
+        document.getElementById('colon1').innerHTML = " : ";
+        document.getElementById('colon2').innerHTML = " : ";
 
-        setTimeout(stopWatch, 1000);  // 10: ms, 1000:s, ...
-    } 
-}
+        console.log(request.hourColor, request.minuteColor, request.secondColor); // checking if successfully receive colors
 
+        document.getElementById('hr').style.color = request.hourColor;
+        document.getElementById('colon1').style.color = request.colonColor1;
+        document.getElementById('min').style.color = request.minuteColor;
+        document.getElementById('colon2').style.color = request.colonColor2;
+        document.getElementById('sec').style.color = request.secondColor;
+    }
+});
 
 var i = 0;
 var txt = '';
