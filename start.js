@@ -1,33 +1,81 @@
-let stopBtn = document.getElementById('finish'); 
-let breakBtn = document.getElementById('break'); 
-
 // start the timer
 chrome.runtime.sendMessage({command: "start"});
 
-stopBtn.addEventListener('click', function () { 
+document.getElementById('finish').addEventListener('click', function () { 
     chrome.runtime.sendMessage({command: "stop"});
 }); 
   
-breakBtn.addEventListener('click', function () { 
+document.getElementById('break').addEventListener('click', function () { 
     chrome.runtime.sendMessage({command: "stop"});
 }); 
 
+document.addEventListener('DOMContentLoaded', function() {
+    chrome.storage.local.get(['hour', 'minute', 'second'], function(data) {
+        updateTimerUI(data.hour, data.minute, data.second);
+    });
+});
+
 // update the timer values
 chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
-    if (request.command === "get") {
-        document.getElementById('hr').innerHTML = request.hour; 
-        document.getElementById('min').innerHTML = request.minute; 
-        document.getElementById('sec').innerHTML = request.second; 
-        document.getElementById('colon1').innerHTML = " : ";
-        document.getElementById('colon2').innerHTML = " : ";
+    if (request.command == "start") {
+        timer = true;
+        startTimer();
+    } else if (request.command == "stop") {
+        timer = false;
+    } 
+});
 
-        console.log(request.hourColor, request.minuteColor, request.secondColor); // checking if successfully receive colors
+function updateTimerUI(hour, minute, second) {
+    // default to 0 if undefined
+    hour = hour || 0;  
+    minute = minute || 0;
+    second = second || 0;
 
-        document.getElementById('hr').style.color = request.hourColor;
-        document.getElementById('colon1').style.color = request.colonColor1;
-        document.getElementById('min').style.color = request.minuteColor;
-        document.getElementById('colon2').style.color = request.colonColor2;
-        document.getElementById('sec').style.color = request.secondColor;
+    // determine the color of the timer values (it is gray at the start)
+    let initialColor = "rgb(0, 0, 0)";
+    let changeColor = "rgba(159, 158, 158, 0.676)";
+    let hourColor = hour > 0 ? initialColor : changeColor;
+    let minuteColor = minute > 0 || hour > 0 ? initialColor : changeColor;  // the color of the minutes will remain gray only if the hours is 0
+    let secondColor = second > 0 || minute > 0 || hour > 0 ? initialColor : changeColor;
+    let colonColor1 = hour > 0 ? initialColor : changeColor;
+    let colonColor2 = minute > 0 ? initialColor : changeColor;
+
+    // convert the timer values to strings and pad with zeros
+    document.getElementById('hr').innerHTML = hour.toString().padStart(2, '0'); 
+    document.getElementById('min').innerHTML = minute.toString().padStart(2, '0'); 
+    document.getElementById('sec').innerHTML = second.toString().padStart(2, '0'); 
+    document.getElementById('colon1').innerHTML = " : ";
+    document.getElementById('colon2').innerHTML = " : ";
+
+    document.getElementById('hr').style.color = hourColor;
+    document.getElementById('colon1').style.color = colonColor1;
+    document.getElementById('min').style.color = minuteColor;
+    document.getElementById('colon2').style.color = colonColor2;
+    document.getElementById('sec').style.color = secondColor;
+}
+
+chrome.storage.onChanged.addListener(function(changes, namespace) {
+/*     console.log("Storage changes detected:", changes); // log to see what changes are detected */
+    if (namespace === 'local') {
+        let changedItems = ['hour', 'minute', 'second'].reduce((acc, key) => {
+            if (changes[key]) {
+/*                 console.log(`Detected change in ${key}:`, changes[key].oldValue, "->", changes[key].newValue); */
+                acc[key] = changes[key].newValue; // capture new value if they exist
+            }
+            return acc;
+        }, {});
+
+        // still retrieve the current values of hour, minute, and second from the storage if they're not included in the changedItems object
+        if (Object.keys(changedItems).length) {
+/*             console.log("Updating UI with:", changedItems); */
+            chrome.storage.local.get(['hour', 'minute', 'second'], function(result) {
+                updateTimerUI(
+                    changedItems.hour !== undefined ? changedItems.hour : result.hour,
+                    changedItems.minute !== undefined ? changedItems.minute : result.minute,
+                    changedItems.second !== undefined ? changedItems.second : result.second
+                );
+            });
+        }
     }
 });
 
@@ -36,11 +84,11 @@ var txt = '';
 var speed = 50; /* the speed/duration of the effect in milliseconds */
 
 function typeWriter() {
-  if (i < txt.length) {
-    document.getElementById("quote-element").innerHTML += txt.charAt(i);
-    i++;
-    setTimeout(typeWriter, speed);
-  }
+    if (i < txt.length) {
+        document.getElementById("quote-element").innerHTML += txt.charAt(i);
+        i++;
+        setTimeout(typeWriter, speed);
+    }
 }
 
 function fetchQuote() {
@@ -100,7 +148,6 @@ document.getElementById('music-icon').addEventListener('click', function() {
         muteButton.src = './images/music-off.png'; 
     }
 });
-
 
 function animateImage() {
     var imgIndex = 0;
