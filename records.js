@@ -1,4 +1,4 @@
-// get the new session name and add it to the table if exist
+// get the new session name and date, and add it to the table if exist
 window.onload = function() {
     chrome.storage.local.get(['sessionName', 'table_records'], function(result) {
         var table = document.getElementById('table_records');
@@ -13,12 +13,23 @@ window.onload = function() {
             console.log('Value currently is ' + result.sessionName);
             var row = table.insertRow(1); // first row (title): 0, last row: -1
             var cell1 = row.insertCell(0);
+            var cell2 = row.insertCell(1);
             cell1.innerHTML = result.sessionName;
 
             // delete the temporary sessionName from storage
             chrome.storage.local.remove('sessionName', function() {
                 console.log('sessionName has been removed from storage');
             });
+            
+            // get the current date
+            var date = new Date();
+            var day = String(date.getDate()).padStart(2, '0');
+            var month = String(date.getMonth() + 1).padStart(2, '0'); // January is 0!
+            var year = date.getFullYear();
+
+            // format the date as dd.mm.yyyy
+            var formattedDate = day + '.' + month + '.' + year;
+            cell2.innerHTML = formattedDate;
 
             // save the updated table to the storage
             chrome.storage.local.set({table_records: table.innerHTML}, function() {
