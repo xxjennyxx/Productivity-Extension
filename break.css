@@ -93,14 +93,9 @@ body {
     transform: translate(-50%, -50%);
 } 
 
-.break_digit { 
+.break_digit, .break_txt { 
     font-size: 40px; 
-    color: rgba(159, 158, 158, 0.676); 
-} 
-
-.break_txt { 
-    font-size: 40px; 
-    color: rgba(159, 158, 158, 0.676); 
+    color: rgb(0, 0, 0);  /* rgba(159, 158, 158, 0.676); */
 } 
 
 .break_quote { 

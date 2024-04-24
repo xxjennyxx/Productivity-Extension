@@ -10,9 +10,10 @@ continueBtn.addEventListener('click', function () {
     break_timer = false;  
 });   */
 
+// stops the timer when timer is less than 0 and leave the timer at 0, do not restart it
 function startTimer(duration) {
     var timer = duration, hours, minutes, seconds;
-    setInterval(function () {
+    var intervalId = setInterval(function () {
         hours = parseInt(timer / 3600, 10);
         minutes = parseInt((timer % 3600) / 60, 10);
         seconds = parseInt(timer % 60, 10);
@@ -26,7 +27,7 @@ function startTimer(duration) {
         document.querySelector('#break_sec').textContent = seconds;
 
         if (--timer < 0) {
-            timer = duration;
+            clearInterval(intervalId); // stop the timer
         }
     }, 1000);
 }
