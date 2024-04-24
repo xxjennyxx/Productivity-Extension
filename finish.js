@@ -1,8 +1,16 @@
-// not saving the data, only going to next page for now, change the save button later
-
 document.getElementById('save').addEventListener('click', function(event) {
+    var sessionName = document.getElementById('name').value;
+    if (sessionName === '') {
+        // if the input field is empty, show an error message and prevent the form from being submitted
+        alert('Please enter a session name');
+        event.preventDefault();
+    } else {
+        chrome.storage.local.set({sessionName: sessionName}, function() {
+            console.log('Value is set to ' + sessionName);
+        });
     event.preventDefault();
     window.location.href = './records.html'; 
+    }
 });
 
 document.getElementById('delete').addEventListener('click', function(event) {

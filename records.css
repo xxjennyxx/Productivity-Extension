@@ -94,7 +94,9 @@ body {
     width: 400px;  
     height: 120px; 
     overflow: auto;
-    top: 50%;
+    top: 70%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     margin: auto;
     background-color: transparent;
     border-radius: 10px; 
