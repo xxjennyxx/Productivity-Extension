@@ -3,7 +3,11 @@ document.getElementById('return').addEventListener('click', function(event) {
     window.location.href = './finish.html';
 });
 
-/* document.getElementById('del').addEventListener('click', function(event) {
+document.getElementById('del').addEventListener('click', function(event) {
     event.preventDefault();
-    // window.location.href = './del.html';
-}); */
+    // reset timer
+    chrome.runtime.sendMessage({command: "reset"}, function(response) {
+        /*                 console.log(response.status); */
+                        });
+    window.location.href = './main.html';
+});

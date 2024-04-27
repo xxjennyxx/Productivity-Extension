@@ -4,11 +4,17 @@ chrome.action.onClicked.addListener(tab => {
         let width = 560;
         let height = 330;
         let left = Math.round((currentWindow.width - width) / 2 + currentWindow.left);
-        let top = Math.round((currentWindow.height - height) / 2 + currentWindow.top)- 100; // Subtract 50 to move the window up
+        let top = Math.round((currentWindow.height - height) / 2 + currentWindow.top)- 100; // subtract 50 to move the window up
+
+        if (timer) { // if the timer is still running, open timer page
+            var page = 'start.html';
+        } else {
+            page = 'main.html';
+        }
 
         let createData = {
             type: 'popup',
-            url: 'main.html',
+            url: page,
             width: width,
             height: height,
             left: left,
@@ -20,7 +26,6 @@ chrome.action.onClicked.addListener(tab => {
         });
     });
 });
-
 
 let totalSeconds = 0; 
 let timer = false;
@@ -57,7 +62,14 @@ function tickTimer() {
             console.log("Time updated", {hour, minute, second});
         } */
     });
+}
 
+function resetTimer() {
+    stopTimer();
+    totalSeconds = 0;
+    chrome.storage.local.set({hour: 0, minute: 0, second: 0}, function() {
+/*         console.log('Time has been reset to 00:00:00'); */
+    });
 }
 
 chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
@@ -67,9 +79,12 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
             sendResponse({status: 'Timer started'});
         } else if (request.command == "stop") {
             timer = false; // stop timer 
+            stopTimer();
             sendResponse({status: 'Timer stopped'});
+        } else if (request.command == "reset") {
+            resetTimer();
+            sendResponse({status: 'Timer resetted'});
         }
-
     }
 );
 
