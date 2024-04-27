@@ -67,6 +67,16 @@ body {
     transform: translate(-50%, -50%);
 }
 
+#daily-time, #goal-time, #total-time {
+    position: absolute;
+    top: 65%; 
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 18px;
+    white-space: nowrap; /* prevent the text from wrapping to the next line */
+/*     font-style: normal; */
+}
+
 /* #rectangle {
     width: 600px; 
     height: 150px; 
