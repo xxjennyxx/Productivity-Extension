@@ -59,23 +59,14 @@ body {
     transform: translate(-50%, -50%);
 }
 
-/* .image {
-    position: absolute;
-    top: 35%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 100px; 
-    height: 100px; 
-} */
-
 .image {
     position: absolute;
     top: 35%;
-/*     left: 50%; cat*/ 
+    /* left: 50%; cat */
     left: 52%; /* blue cat */
     transform: translate(-50%, -50%);
-/*     width: 80px; 
-    height: 80px; cat*/
+    /* width: 80px;  */
+    /* height: 80px; cat */
     width: 85px;  /* blue cat */
     height: 85;  /* blue cat */
 }
@@ -129,4 +120,3 @@ body {
     bottom: 25px;
     cursor: pointer;
 }
-

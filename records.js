@@ -19,7 +19,7 @@ window.onload = function() {
 
         // if there's a new session name, add it to the table
         if (result.sessionName) {
-            console.log('Value currently is ' + result.sessionName);
+            /* console.log('Value currently is ' + result.sessionName); */
             var row = table.insertRow(1); // first row (title): 0, last row: -1
             var cell1 = row.insertCell(0);
             var cell2 = row.insertCell(1);
@@ -28,7 +28,7 @@ window.onload = function() {
 
             // delete the temporary sessionName from storage
             chrome.storage.local.remove('sessionName', function() {
-                console.log('sessionName has been removed from storage');
+                /* console.log('sessionName has been removed from storage'); */
             });
             
             // format the time as hh:mm:ss
@@ -38,12 +38,12 @@ window.onload = function() {
 
             // reset timer
             chrome.runtime.sendMessage({command: "reset"}, function(response) {
-/*                 console.log(response.status); */
+                /* console.log(response.status); */
             });
 
             // save the updated table to the storage
             chrome.storage.local.set({table_records: table.innerHTML}, function() {
-                console.log('Table has been saved to storage');
+                /* console.log('Table has been saved to storage'); */
             });
         }
 

@@ -56,7 +56,7 @@ function tickTimer() {
 
     // persist updated time every tick
     chrome.storage.local.set({hour, minute, second}, () => {
-/*         if (chrome.runtime.lastError) {
+        /* if (chrome.runtime.lastError) {
             console.log(`Error updating time: ${chrome.runtime.lastError.message}`);
         } else {
             console.log("Time updated", {hour, minute, second});
@@ -68,7 +68,7 @@ function resetTimer() {
     stopTimer();
     totalSeconds = 0;
     chrome.storage.local.set({hour: 0, minute: 0, second: 0}, function() {
-/*         console.log('Time has been reset to 00:00:00'); */
+        /* console.log('Time has been reset to 00:00:00'); */
     });
 }
 
@@ -87,4 +87,3 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
         }
     }
 );
-

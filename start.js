@@ -31,11 +31,11 @@ function updateTimerUI(hour, minute, second) {
     minute = minute || 0;
     second = second || 0;
 
-    // determine the color of the timer values (it is gray at the start)
+    // determine the colour of the timer values (it is gray at the start)
     let initialColor = "rgb(0, 0, 0)";
     let changeColor = "rgba(159, 158, 158, 0.676)";
     let hourColor = hour > 0 ? initialColor : changeColor;
-    let minuteColor = minute > 0 || hour > 0 ? initialColor : changeColor;  // the color of the minutes will remain gray only if the hours is 0
+    let minuteColor = minute > 0 || hour > 0 ? initialColor : changeColor;  // the colour of the minutes will remain gray only if the hours is 0
     let secondColor = second > 0 || minute > 0 || hour > 0 ? initialColor : changeColor;
     let colonColor1 = hour > 0 ? initialColor : changeColor;
     let colonColor2 = minute > 0 ? initialColor : changeColor;
@@ -55,11 +55,11 @@ function updateTimerUI(hour, minute, second) {
 }
 
 chrome.storage.onChanged.addListener(function(changes, namespace) {
-/*     console.log("Storage changes detected:", changes); // log to see what changes are detected */
+    /* console.log("Storage changes detected:", changes);  */// log to see what changes are detected
     if (namespace === 'local') {
         let changedItems = ['hour', 'minute', 'second'].reduce((acc, key) => {
             if (changes[key]) {
-/*                 console.log(`Detected change in ${key}:`, changes[key].oldValue, "->", changes[key].newValue); */
+                /* console.log(`Detected change in ${key}:`, changes[key].oldValue, "->", changes[key].newValue); */
                 acc[key] = changes[key].newValue; // capture new value if they exist
             }
             return acc;
@@ -67,7 +67,7 @@ chrome.storage.onChanged.addListener(function(changes, namespace) {
 
         // still retrieve the current values of hour, minute, and second from the storage if they're not included in the changedItems object
         if (Object.keys(changedItems).length) {
-/*             console.log("Updating UI with:", changedItems); */
+            /* console.log("Updating UI with:", changedItems); */
             chrome.storage.local.get(['hour', 'minute', 'second'], function(result) {
                 updateTimerUI(
                     changedItems.hour !== undefined ? changedItems.hour : result.hour,
@@ -159,4 +159,3 @@ function animateImage() {
         if (imgIndex >= images.length) imgIndex = 0;
     }, delay / images.length);
 }
-

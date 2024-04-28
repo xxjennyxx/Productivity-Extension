@@ -1,12 +1,15 @@
 {
     "manifest_version": 3,
-    "name": "Testing",
+    "name": "Productivity Extension",
     "version": "1.0",
     "background": {
         "service_worker": "background.js"
     },
     "action":{
-        "default_popup": ""
+        "default_popup": "",
+        "default_icon": {
+            "128": "images/blue_cat_idle4.png"
+        }
     },
     "permissions": [
         "storage", "activeTab", "tabs"

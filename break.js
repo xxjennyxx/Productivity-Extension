@@ -1,15 +1,3 @@
-/* let finBtn = document.getElementById('fin'); 
-let continueBtn = document.getElementById('continue'); 
-  
-  
-finBtn.addEventListener('click', function () { 
-    break_timer = false; 
-}); 
-  
-continueBtn.addEventListener('click', function () { 
-    break_timer = false;  
-});   */
-
 // stops the timer when timer is less than 0 and leave the timer at 0, do not restart it
 function startTimer(duration) {
     var timer = duration, hours, minutes, seconds;
@@ -125,4 +113,3 @@ function animateImage() {
         if (imgIndex >= images.length) imgIndex = 0;
     }, delay / images.length);
 }
-

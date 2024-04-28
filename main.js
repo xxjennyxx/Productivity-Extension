@@ -40,7 +40,7 @@ window.onload = function() {
         }
 
         // move up and down
-/*         if (Math.abs(mouseY - imgY) > 1) { 
+        /* if (Math.abs(mouseY - imgY) > 1) { 
             imgY += (mouseY - imgY) * speed;
         } */
 
