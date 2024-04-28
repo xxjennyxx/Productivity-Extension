@@ -11,6 +11,12 @@ window.onload = function() {
     document.onmousemove = function(e){
         mouseX = e.pageX;
         mouseY = e.pageY;
+        var centerX = imgX + img.offsetWidth / 2;
+        if (mouseX < centerX) { // if the mouse is moving to the left
+            img.style.transform = 'scaleX(-1)'; // flip the image
+        } else if (mouseX > centerX) { // if the mouse is moving to the right
+            img.style.transform = 'scaleX(1)'; // unflip the image
+        } // if mouseX == centerX, do nothing 
         if (!moving) {
             moving = true;
             img.src = images[imageIndex]; // change the image
@@ -20,14 +26,15 @@ window.onload = function() {
 
     var frameCount = 0;
     function moveImage() {
-        if (Math.abs(mouseX - imgX) > 1) {
-            var distance = Math.abs(mouseX - imgX);
+        var centerX = imgX + img.offsetWidth / 2;
+        if (Math.abs(mouseX - centerX) > 1) {
+            var distance = Math.abs(mouseX - centerX);
             var dynamicSpeed = speed;
             if (distance < 50) { // if the distance is small
                 dynamicSpeed *= (1 + (50 - distance) / 50); // increase the speed factor
             }
-            imgX += (mouseX - imgX - img.offsetWidth / 2) * dynamicSpeed; // adjust the image position by half of the image width
-            if (Math.abs(mouseX - imgX) < 1) { // if the distance is small
+            imgX += (mouseX - centerX) * dynamicSpeed; // adjust the image position by half of the image width
+            if (Math.abs(mouseX - centerX) < 1) { // if the distance is small
                 imgX = mouseX - img.offsetWidth / 2; // set the image position directly to the mouse position
             }
         }
@@ -42,8 +49,8 @@ window.onload = function() {
 
         // update the image every few frames
         if (frameCount % 10 === 0) { // change the image every 10 frames
-            // check if the mouse is at the center of the image
-            if (Math.abs(mouseX - (imgX + img.offsetWidth / 2)) <= 1) {
+            // check if the mouse is at the centre of the image
+            if (Math.abs(mouseX - centerX) <= 1) {
                 img.src = './images/blue_cat1.png';
                 imageIndex = 0; // reset the image index
             } else {
@@ -53,7 +60,7 @@ window.onload = function() {
         }
         frameCount++;
 
-        if (Math.abs(mouseX - imgX) > 1) { // if (Math.abs(mouseX - imgX) > 1 || Math.abs(mouseY - imgY) > 1) 
+        if (Math.abs(mouseX - centerX) > 1) { // if (Math.abs(mouseX - imgX) > 1 || Math.abs(mouseY - imgY) > 1) 
             requestAnimationFrame(moveImage);
         } else {
             moving = false;
