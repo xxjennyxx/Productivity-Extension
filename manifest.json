@@ -1,17 +1,18 @@
 {
     "manifest_version": 3,
-    "name": "Productivity Extension",
+    "name": "Productivity",
     "version": "1.0",
+    "permissions": ["storage", "activeTab", "tabs"],
     "background": {
         "service_worker": "background.js"
     },
     "action":{
         "default_popup": "",
-        "default_icon": {
-            "128": "images/blue_cat_idle4.png"
-        }
+        "default_icon": "images/blue_cat_icon.png"
     },
-    "permissions": [
-        "storage", "activeTab", "tabs"
-    ]
+    "icons": {
+        "16": "images/blue_cat_icon.png",
+        "48": "images/blue_cat_icon.png",
+        "128": "images/blue_cat_icon.png"
+    }
 }
