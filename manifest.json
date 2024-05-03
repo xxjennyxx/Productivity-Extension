@@ -1,13 +1,14 @@
 {
-    "manifest_version": 3,
     "name": "Productivity",
-    "version": "1.0",
+    "description": "Enhance your efficiency by managing study or work sessions and stay motivated!",
+    "version": "1.0.0",
+    "manifest_version": 3,
+    "author": "Jennier Yang",
     "permissions": ["storage", "activeTab", "tabs"],
     "background": {
         "service_worker": "background.js"
     },
     "action":{
-        "default_popup": "",
         "default_icon": "images/blue_cat_icon.png"
     },
     "icons": {
