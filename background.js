@@ -73,17 +73,16 @@ function resetTimer() {
 }
 
 chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
-        if (request.command == "start") {
-            timer = true; // start timer
-            startTimer();
-            sendResponse({status: 'Timer started'});
-        } else if (request.command == "stop") {
-            timer = false; // stop timer 
-            stopTimer();
-            sendResponse({status: 'Timer stopped'});
-        } else if (request.command == "reset") {
-            resetTimer();
-            sendResponse({status: 'Timer resetted'});
-        }
+    if (request.command == "start") {
+        timer = true; // start timer
+        startTimer();
+        sendResponse({status: 'Timer started'});
+    } else if (request.command == "stop") {
+        timer = false; // stop timer 
+        stopTimer();
+        sendResponse({status: 'Timer stopped'});
+    } else if (request.command == "reset") {
+        resetTimer();
+        sendResponse({status: 'Timer resetted'});
     }
-);
+});
