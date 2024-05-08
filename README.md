@@ -1,6 +1,6 @@
-# Productive
+# Productivity
 
-Productive is a Chrome extension designed to help users manage their study or work sessions effectively. It provides tools to track time spent on tasks, set goals, and review records of past activities, enhanced with interactive features and ambient sound controls for an engaging and motivating experience.
+Productivity is a Chrome extension designed to help users manage their study or work sessions effectively. It provides tools to track time spent on tasks, set goals, and review records of past activities, enhanced with interactive features and ambient sound controls for an engaging and motivating experience.
 
 ## Features
 
